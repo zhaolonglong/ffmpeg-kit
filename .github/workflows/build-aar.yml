@@ -10,25 +10,15 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v3
 
-      - name: Setup JDK
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'temurin'
-          java-version: '17'
-
-      - name: Install Android SDK/NDK
-        uses: android-actions/setup-android@v3
-        with:
-          ndk-version: '25.2.9519653'
-
       - name: Install build tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y cmake ninja-build python3
+          sudo apt-get install -y cmake ninja-build python3 openjdk-17-jdk
 
       - name: Build ffmpeg-kit (MIT full)
         run: |
           cd android
+          chmod +x android.sh
           ./android.sh --lts --full
 
       - name: List AAR files
