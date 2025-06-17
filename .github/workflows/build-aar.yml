@@ -58,7 +58,7 @@ jobs:
 
       - name: Build ffmpeg-kit (LTS, arm64-v8a only)
         run: |
-          ./android.sh --lts --arch=arm64-v8a --enable-android-media-codec --enable-android-zlib --disable-x86 --disable-x86-64 --disable-arm-v7a --disable-arm-v7a-neon
+          run: ./android.sh --lts --enable-android-media-codec --enable-android-zlib --disable-x86 --disable-x86-64 --disable-arm-v7a --disable-arm-v7a-neon
 
       - name: List generated AAR files
         run: ls -lh android/build/outputs/aar/
